@@ -42,22 +42,9 @@ void setup() {
   pinMode(D5, OUTPUT);
   pinMode(D6, OUTPUT);
   pinMode(D7, OUTPUT);
-  digitalWrite(D0, LOW);
-  digitalWrite(D1, LOW);
-  digitalWrite(D2, LOW);
-  digitalWrite(D3, LOW);
-  digitalWrite(D4, LOW);
-  digitalWrite(D5, LOW);
-  digitalWrite(D6, LOW);
-  digitalWrite(D7, LOW);
+  blankScreen();
 }
 
-template <class T> String type_name(const T&) {
-  String s = __PRETTY_FUNCTION__;
-  int start = s.indexOf("[with T = ") + 10;
-  int stop = s.lastIndexOf(']');
-  return s.substring(start, stop);
-}
 
 void loop() {
   // put your main code here, to run repeatedly:
@@ -69,10 +56,8 @@ void loop() {
     Serial.print("Received Data: ");
     int n = int(num)-48;
     Serial.write(n);
-    Serial.println(" ");
-    Serial.println(n);
     if(0<=n && n<10){
-      Serial.println("Calling function..");
+      Serial.println("Calling LED Segment function..");
       lightNumber(n);
     }
     delay(1000);
